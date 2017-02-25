@@ -1,11 +1,66 @@
-<html ng-app="Donate">
+<html ng-app="Donate_app">
     <head>
-        <link rel="stylesheet" type="text/css" href="/lib/css/bootstrap.min.css"/>
-        <script src="/lib/js/angular.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css"/>
+        <script src="lib/js/angular.min.js"></script>
+        <style>
+        .heading {
+            position:relative;
+            background-color:#424242;
+            height:100px !important;
+            width:100% !important;
+            border-radius: 5px;
+            padding-top:5%;
+            text-align:center;
+            color:white;
+            font-size:28px;
+            font-family: Georgia;
+        }
+        .heading:after {
+            content:'';
+            position: absolute;
+            top: 95%;
+            left: 85%;
+            margin-left: -50px;
+            width: 0;
+            height: 0;
+            border-top: solid 20px #424242;
+            border-left: solid 20px transparent;
+            border-right: solid 20px transparent;
+        }
+        </style>
     </head>
     <body ng-controller="Donate_controller">
-        <div class="container" style="background-color:yellow;">
-            hi
+        <div class="container-fluid">
+            <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12" style="min-height:{{screen_height}}px;background-color:yellow;padding-top:20px;">
+                <div class="heading">
+                    <b><span style="font-family: Calibri;">$</span>167</b> still needed for this project
+                </div>
+                <div class="panel panel-default" style="margin-top:20px;">
+                    <div class="panel-heading" style="height:25px;padding:0px;">
+                        <div class="col-md-9 col-sm-8 col-xs-8" style="height:100%;background-color:#F3623D;">
+                        </div>
+                    </div>
+                    <div class="panel-body" style="font-size:26px;font-family: Georgia;color:#A5A5A5;padding-left:50px;padding-right:50px;">
+                        <p>
+                        <span style="color:#F3623D;">
+                            <b>Only 3 days left</b>
+                        </span> to fund this project.
+                        </p>
+                        <p>
+                            Join the <b>42</b> other Donors who have already supported this project.Every dollar helps.
+                        </p>
+                        <div>
+                            <div class="input-group" style="height:100px;width:50%;">
+                                <span class="input-group-addon" id="basic-addon1" style="font-family: Franklin Gothic;font-size:28px;background-color:white;border-right:0px;">$</span>
+                                <input type="text" class="form-control" style="font-family: Franklin Gothic;font-size:28px;height:100px;border-left:1px solid rgba(255, 255, 255, 0.1);" placeholder="Donate Amount" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <input type="button" value="Share" ng-click="loadtwitter();"/>
+                    </div>
+                </div>
+            </div>
         </div>
+        <script src="lib/js/angular-socialshare.js"></script>
+        <script src="controllers/donate_controller.js"></script>
     </body>
 </html>
