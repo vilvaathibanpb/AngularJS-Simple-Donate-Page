@@ -1,27 +1,37 @@
+<!DOCTYPE html>
 <html ng-app="Donate_app">
     <head>
+        <!-- JS Scripts -->
         <script src="lib/js/angular.min.js"></script>
-        <script src='lib/js/nprogress.js'></script>
-        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
+        <script src='lib/js/nprogress.js'></script>        
+        <!-- / JS Scripts -->
+        <!-- CSS -->
         <link rel='stylesheet' href='lib/css/nprogress.css'/>
         <link rel='stylesheet' href='lib/css/advertisement.css'/>
         <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css"/>
+        <!-- / CSS -->
     </head>
+
     <body ng-controller="Donate_controller">
         <div class="container-fluid">
             <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12 containertop" >
                 <div class="heading">
+                    <!-- Alert Message about the current status -->
                     <span ng-if="(totalamount-donatedamount)!=0"><b><span class="dollar">$</span><span ng-bind="totalamount-donatedamount"></span></b> still needed for this project </span>
                     <span ng-if="(totalamount-donatedamount)==0">Thanks for Supporting!!</span>
+                    <!-- / Alert Message about the current status -->
                 </div>
                 <div class="panel panel-default mypanel">
                     <div class="panel-heading myheight" style="padding:0px;">
+                        <!-- Progress Bar -->
                         <div class="progress" style="height:25px;">
                         <div class="progress-bar" role="progressbar" style="width:{{slidervalue}}%;background-color:#F3623D;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        <!-- / Progress Bar -->
                         </div>
                     </div>
                     <div class="panel-body" style="font-size:26px;font-family: Georgia;color:#808080;padding-left:50px;padding-right:50px;">
                         <p>
+                            <!-- Static Text -->
                         <span class="highlight">
                             <b>Only 3 days left</b>
                         </span> to fund this project.
@@ -29,29 +39,42 @@
                         <p class="content-msg">
                             Join the <b>42</b> other Donors who have already supported this project.Every dollar helps.
                         </p>
+
+                            <!--/ Static Text -->
+
                         <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
                             <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px;padding-right:20px;">
                                 <div class="input-group" style="height:100px;width:100%;">
+                                    <!-- Amount Box -->
                                     <span class="input-group-addon" id="basic-addon1" style="font-family: Franklin Gothic;font-size:28px;background-color:white;">$</span>
                                     <input type="number" ng-model="amount" max="{{totalamount-donatedamount}}" ng-change="checkamount(amount);" class="form-control" style="font-family: Franklin Gothic;font-size:28px;height:100px;border-left:1px solid rgba(255, 255, 255, 0.1);" placeholder="Amount" aria-describedby="basic-addon1" ng-disabled="(totalamount-donatedamount==0)">
+                                    <!-- / Amount Box -->
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6" style="height:100px;padding-left:20px;">
+                                <!-- Give Now button -->
                                 <button type="button" ng-click="givenow(amount);" style="height:100%;border-radius:5px;padding:10px;width:100%;font-weight:bold;background-color: #21BA2B;color:white" ng-disabled="(totalamount-donatedamount==0)"> Give Now </button>
+                                <!-- / Give Now button -->
                             </div>
                         </div>
+                        <!-- Link to other page -->
                         <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px;padding-top:10px;padding-bottom:10px;">
-                            <a href="#" style="color:#5DBCD2;">Why give $50?</a>
+                            <a href="#" style="color:#5DBCD2;">Why give $50?</a>                        
                         </div>
-                        <div ng-if="invalidflag && ((totalamount-donatedamount)!=0)" style="color:#4d0099;font-size:24px;">
+                        <!-- / Link to other page -->
+                        <!-- Invalid Amount Error msg -->
+                        <div ng-if="invalidflag && ((totalamount-donatedamount)!=0)" style="color:#4d0099;font-size:24px;">                        
                             You can Pay only <span ng-bind="totalamount-donatedamount"></span> Amount
                         </div>
-                        <!--<input type="button" value="Share" ng-click="loadtwitter();"/>-->
+                        <!-- / Invalid Amount Error msg -->
                     </div>
                 </div>
+                <!-- Save Later -->
                 <button type="button" id="myBtn" class="button panel panel-default col-md-5 col-sm-5 col-xs-5" style="color:#808080;padding:20px;background-color:#FAFAFA;text-align:center;font-family:Franklin Gothic;font-weight:bold;font-size:24px;">
                     Save for Later
                 </button>
+                <!-- / Save Later -->
+                <!-- Share on Social Media -->
                 <button type="button" ng-mouseleave="hover=false;" ng-mouseover="hover=true;" class="button panel panel-default col-md-offset-2 col-md-5 col-sm-offset-2 col-sm-5 col-xs-offset-2 col-xs-5" style="color:#808080;text-align:center;padding:20px;background-color:#FAFAFA;font-family:Franklin Gothic;font-weight:bold;font-size:24px;">
                     <span ng-show="!hover">Tell your friends</span>
                     <span class="col-md-6 col-sm-6 col-xs-6" style="padding:0px;margin-top:-8px;margin-bottom:-8px;" ng-show="hover">
@@ -61,12 +84,13 @@
                         <img src="assets/images/images.png" ng-click="loadtwitter()"  height="50px" width="50px"></img>
                     </span>
                 </button>
+                <!-- / Share on Social Media -->
             </div>
         </div>
         
         <!-- The Modal -->
         <div id="myModal" class="modal">
-        <!-- Modal content -->
+        <!-- "Saved" Alert -->
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h1 style="text-align:center;">Saved !!!</h1>
